@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<extendedFeatureModel>
+    <properties>
+    </properties>
+    <struct>
+        <alt name="Datenbank">
+            <feature name="MySQL"></feature>
+            <feature name="PostgreSQL"></feature>
+        </alt>
+    </struct>
+    <constraints>
+    </constraints>
+</extendedFeatureModel>

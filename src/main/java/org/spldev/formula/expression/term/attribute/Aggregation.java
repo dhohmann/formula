@@ -19,7 +19,9 @@ public abstract class Aggregation<D> extends Function<D, D> {
     public Aggregation(String featureAttribute, VariableMap variables) {
         List<Term<D>> sumElements = new ArrayList<>();
         String format = featureAttribute + "\\(.*\\)\\." + getAggregationType().name();
+
         for (VariableMap.VariableSignature s : variables) {
+            if(s == null) continue;
             if (s.getName().matches(format)) {
                 sumElements.add((Term<D>) variables.getVariable(s.getName()).get());
             }
