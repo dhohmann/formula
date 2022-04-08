@@ -8,29 +8,29 @@ import java.util.Optional;
 
 public class RealAverage extends Average<Double> {
 
-    public RealAverage(String name, VariableMap map){
-        super(name, map);
-    }
+	public RealAverage(String name, VariableMap map) {
+		super(name, map);
+	}
 
-    protected RealAverage(){
-        super();
-    }
+	protected RealAverage() {
+		super();
+	}
 
-    @Override
-    public Optional<Double> eval(List<Double> values) {
-        if (values.stream().anyMatch(value -> value == null)) {
-            return Optional.empty();
-        }
-        return values.stream().reduce(Double::sum);
-    }
+	@Override
+	public Optional<Double> eval(List<Double> values) {
+		if (values.stream().anyMatch(value -> value == null)) {
+			return Optional.empty();
+		}
+		return values.stream().reduce(Double::sum);
+	}
 
-    @Override
-    public Class<Double> getType() {
-        return Double.class;
-    }
+	@Override
+	public Class<Double> getType() {
+		return Double.class;
+	}
 
-    @Override
-    public Average<Double> cloneNode() {
-        return new RealAverage();
-    }
+	@Override
+	public Average<Double> cloneNode() {
+		return new RealAverage();
+	}
 }

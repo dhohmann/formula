@@ -8,26 +8,26 @@ import java.util.Optional;
 
 public class RealProduct extends Product<Double> {
 
-    public RealProduct(String name, VariableMap map){
-        super(name, map);
-    }
+	public RealProduct(String name, VariableMap map) {
+		super(name, map);
+	}
 
-    protected RealProduct(){
-        super();
-    }
+	protected RealProduct() {
+		super();
+	}
 
-    @Override
-    public Optional<Double> eval(List<Double> values) {
-        return Optional.empty();
-    }
+	@Override
+	public Optional<Double> eval(List<Double> values) {
+		return Optional.empty();
+	}
 
-    @Override
-    public Class<Double> getType() {
-        return Double.class;
-    }
+	@Override
+	public Class<Double> getType() {
+		return Double.class;
+	}
 
-    @Override
-    public Product<Double> cloneNode() {
-        return new RealProduct();
-    }
+	@Override
+	public Product<Double> cloneNode() {
+		return new RealProduct();
+	}
 }

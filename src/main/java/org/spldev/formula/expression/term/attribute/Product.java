@@ -2,25 +2,26 @@ package org.spldev.formula.expression.term.attribute;
 
 import org.spldev.formula.expression.atomic.literal.VariableMap;
 
-public abstract class Product<D> extends Aggregation<D>{
+public abstract class Product<D> extends Aggregation<D> {
 
-    public Product(String name, VariableMap variableMap){
-        super(name, variableMap);
-    }
+	public Product(String name, VariableMap variableMap) {
+		super(name, variableMap);
+	}
 
-    protected Product(){
-        super();
-    }
-    @Override
-    public String getName() {
-        return "mul";
-    }
+	protected Product() {
+		super();
+	}
 
-    @Override
-    public abstract Product<D> cloneNode() ;
+	@Override
+	public String getName() {
+		return "mul";
+	}
 
-    @Override
-    protected AggregationType getAggregationType() {
-        return AggregationType.MUL;
-    }
+	@Override
+	public abstract Product<D> cloneNode();
+
+	@Override
+	protected AggregationType getAggregationType() {
+		return AggregationType.MUL;
+	}
 }
