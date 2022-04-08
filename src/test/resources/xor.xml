@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<extendedFeatureModel>
+<featureModel>
     <properties>
     </properties>
     <struct>
-        <alt name="Datenbank">
+        <alt mandatory="true" name="Datenbank">
             <feature name="MySQL"></feature>
             <feature name="PostgreSQL"></feature>
+            <feature name="Oracle"></feature>
+            <feature name="Derby"></feature>
         </alt>
     </struct>
     <constraints>
     </constraints>
-</extendedFeatureModel>
+</featureModel>

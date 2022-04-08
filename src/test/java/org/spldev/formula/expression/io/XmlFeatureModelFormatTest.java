@@ -29,6 +29,11 @@ import org.junit.jupiter.api.*;
 import org.spldev.formula.expression.*;
 import org.spldev.formula.expression.atomic.literal.*;
 import org.spldev.formula.expression.compound.*;
+import org.spldev.formula.expression.transform.NormalForms;
+import org.spldev.util.data.Result;
+import org.spldev.util.io.FileHandler;
+import org.spldev.util.tree.Trees;
+import org.spldev.util.tree.visitor.TreePrinter;
 
 /**
  * Tests {@link XmlFeatureModelFormat FeatureIDE} format.
@@ -107,6 +112,19 @@ public class XmlFeatureModelFormatTest {
 			fail(name);
 			return null;
 		}
+	}
+
+	@Test
+	public void testAlternative() {
+		XmlFeatureModelFormat format = new XmlFeatureModelFormat();
+		Result<Formula> result = FileHandler.load(XmlFeatureModelFormat.class.getResourceAsStream("/xor.xml"), format);
+		Formula f = result.get();
+		//Trees.traverse(f, new TreePrinter()).ifPresent(System.out::println);
+
+		Result<Formula> cnfModel = Formulas.toCNF(NormalForms.simplifyForNF(f));
+		//Trees.traverse(cnfModel.get(), new TreePrinter()).ifPresent(System.out::println);
+
+		assertTrue(true);
 	}
 
 }

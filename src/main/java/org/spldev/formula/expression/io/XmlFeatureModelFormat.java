@@ -308,27 +308,8 @@ public class XmlFeatureModelFormat implements Format<Formula> {
 		return f;
 	}
 
-	/**
-	 * Creates an alternative selection using XOR.
-	 *
-	 * @param parent Parent feature
-	 * @param parseFeatures All features available for selection
-	 * @return parent implies (((f1 XOR f2) XOR ...) XOR fn)
-	 */
-	protected Formula alternative(LiteralPredicate parent, ArrayList<Formula> parseFeatures) {
-		List<Formula> options = new ArrayList<>();
-		for (int i = 0; i < parseFeatures.size(); i++) {
-			List<Formula> p = new ArrayList<>();
-			for (int j = 0; j < parseFeatures.size(); j++) {
-				if(i == j){
-					p.add(parseFeatures.get(j));
-				} else {
-					p.add(new Not(parseFeatures.get(j)));
-				}
-			}
-			options.add(new And(p));
-		}
-		return new Implies(parent, new Or(options));
+	protected Formula choose1(final List<Formula> parseFeatures) {
+		return new Choose(parseFeatures, 1);
 	}
 
 	protected Formula atMost(final List<Formula> parseFeatures) {
